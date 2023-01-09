@@ -4,7 +4,7 @@ const app: Application = express();
 
 const PORT: number = 3000;
 
-app.use('/', (req: Request, res: Response): void => {
+app.use('/', (_: Request, res: Response): void => {
   res.send('Hello world!');
 });
 
