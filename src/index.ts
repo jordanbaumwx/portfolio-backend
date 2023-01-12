@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import express, { Application, Request, Response } from 'express';
+import graphqlApp from './apis/graphql';
 import { asyncHandler } from './utils';
 
 const app: Application = express();
@@ -79,3 +80,5 @@ app.use('/', (_: Request, res: Response): void => {
 app.listen(PORT, (): void => {
   console.log('SERVER IS UP ON PORT:', PORT);
 });
+
+graphqlApp();
