@@ -14,9 +14,9 @@ datasource db {
 model Profile {
   id         Int          @id @default(autoincrement())
   name       String
-  photoURL   String
-  tagline    String
-  bio        String
+  photoURL   String?
+  tagline    String?
+  bio        String?
   email      String       @unique
   createdAt  DateTime     @default(now())
   updatedAt  DateTime     @updatedAt
@@ -32,9 +32,10 @@ model Experience {
   id                  Int                   @id @default(autoincrement())
   title               String
   company             String
+  remote              Boolean
   location            String
   startDate           DateTime
-  endDate             DateTime
+  endDate             DateTime?
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   profileId           Int
@@ -78,9 +79,9 @@ model Skills {
 
 model SkillsOnExperiences {
   experience   Experience @relation(fields: [experienceId], references: [id])
-  skill        Skills     @relation(fields: [skillsId], references: [id])
+  skill        Skills     @relation(fields: [skillId], references: [id])
   experienceId Int
-  skillsId     Int
+  skillId      Int
 
-  @@id([experienceId, skillsId])
+  @@id([experienceId, skillId])
 }
