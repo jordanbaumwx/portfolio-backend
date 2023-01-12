@@ -22,7 +22,7 @@ async function main() {
       company: 'Farmers Risk',
       location: 'Ames, IA',
       remote: true,
-      startDate: '2022-01-31',
+      startDate: new Date('2022-01-31'),
       endDate: null,
       profileId: profile.id,
     },
@@ -34,8 +34,8 @@ async function main() {
       company: 'Radiometrics',
       location: 'Boulder, CO',
       remote: false,
-      startDate: '2019-09-15',
-      endDate: '2022-01-31',
+      startDate: new Date('2019-09-15'),
+      endDate: new Date('2022-01-31'),
       profileId: profile.id,
     },
   });
@@ -46,8 +46,8 @@ async function main() {
       company: 'WDSS International',
       location: 'Norman, OK',
       remote: false,
-      startDate: '2017-01-05',
-      endDate: '2019-09-15',
+      startDate: new Date('2017-01-05'),
+      endDate: new Date('2019-09-15'),
       profileId: profile.id,
     },
   });
@@ -58,8 +58,8 @@ async function main() {
       degree: 'B.S.',
       field: 'Meteorology',
       minors: 'Computer Science and Mathematics',
-      startDate: '2014-08-15',
-      endDate: '2018-05-15',
+      startDate: new Date('2014-08-15'),
+      endDate: new Date('2018-05-15'),
       profileId: profile.id,
     },
   });
@@ -140,11 +140,15 @@ async function main() {
   });
 }
 
-try {
-  await main();
-  console.log('Seed successful');
-} catch (e) {
-  console.error(e);
-} finally {
-  await prisma.$disconnect();
+async function run() {
+  try {
+    await main();
+    console.log('Seed successful');
+  } catch (e) {
+    console.error(e);
+  } finally {
+    await prisma.$disconnect();
+  }
 }
+
+run();

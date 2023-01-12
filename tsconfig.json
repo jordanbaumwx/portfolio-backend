@@ -14,5 +14,6 @@
     "skipDefaultLibCheck": true,
     "sourceMap": true,
     "outDir": "dist"
+
   }
 }
