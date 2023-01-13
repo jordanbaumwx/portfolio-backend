@@ -3,6 +3,7 @@
   "include": ["src/**/*"],
 
   "compilerOptions": {
+    "experimentalDecorators": true,
     "rootDir": "./src",
     "module": "commonjs",
     "target": "es2021",
