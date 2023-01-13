@@ -2,11 +2,12 @@ import 'reflect-metadata';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { ProfileResolver } from './resolvers/profileResolvers';
+import { ExperienceResolver } from './resolvers/experienceResolvers';
 import express from 'express';
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [ProfileResolver],
+    resolvers: [ProfileResolver, ExperienceResolver],
     emitSchemaFile: true,
   });
 

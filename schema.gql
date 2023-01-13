@@ -3,6 +3,13 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+type Experience {
+  company: String!
+  id: ID!
+  location: String
+  title: String!
+}
+
 type Profile {
   bio: String
   email: String!
@@ -11,5 +18,6 @@ type Profile {
 }
 
 type Query {
+  getExperiences: [Experience!]
   getProfiles: [Profile!]
 }

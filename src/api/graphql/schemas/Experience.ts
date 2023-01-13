@@ -1,4 +1,3 @@
-import { Experience } from '@prisma/client';
 import * as TypeGraphQL from 'type-graphql';
 export { TypeGraphQL };
 export type Maybe<T> = T | null;
@@ -25,22 +24,22 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  profiles?: Maybe<Array<Maybe<Profile | Experience>>>;
+  profiles?: Maybe<Array<Maybe<Experience>>>;
 };
 
 @TypeGraphQL.ObjectType()
-export class Profile {
-  __typename?: 'Profile';
+export class Experience {
+  __typename?: 'Experience';
 
   @TypeGraphQL.Field((type) => TypeGraphQL.ID)
   id!: Scalars['ID'];
 
   @TypeGraphQL.Field((type) => String)
-  name!: Scalars['String'];
+  title!: Scalars['String'];
 
   @TypeGraphQL.Field((type) => String)
-  email!: Scalars['String'];
+  company!: Scalars['String'];
 
   @TypeGraphQL.Field((type) => String, { nullable: true })
-  bio?: Maybe<Scalars['String']>;
+  location!: Maybe<Scalars['String']>;
 }
