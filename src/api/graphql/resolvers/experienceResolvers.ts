@@ -16,6 +16,11 @@ export class ExperienceResolver {
         title: experience.title,
         company: experience.company,
         location: experience.location,
+        remote: experience.remote,
+        startDate: experience.startDate,
+        endDate: experience.endDate,
+        createdAt: experience.createdAt,
+        updatedAt: experience.updatedAt,
       } as unknown as Experience;
     });
     return await this.experiences;

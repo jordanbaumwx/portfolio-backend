@@ -42,4 +42,19 @@ export class Experience {
 
   @TypeGraphQL.Field((type) => String, { nullable: true })
   location!: Maybe<Scalars['String']>;
+
+  @TypeGraphQL.Field((type) => Boolean, { nullable: true })
+  remote!: Maybe<Scalars['Boolean']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  startDate!: Maybe<Scalars['Date']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  endDate!: Maybe<Scalars['Date']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  createdAt!: Maybe<Scalars['Date']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  updatedAt!: Maybe<Scalars['Date']>;
 }

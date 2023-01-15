@@ -23,9 +23,14 @@ type Education {
 
 type Experience {
   company: String!
+  createdAt: DateTime
+  endDate: DateTime
   id: ID!
   location: String
+  remote: Boolean
+  startDate: DateTime
   title: String!
+  updatedAt: DateTime
 }
 
 type Profile {
