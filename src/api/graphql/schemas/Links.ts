@@ -1,5 +1,6 @@
 import * as TypeGraphQL from 'type-graphql';
-import { GraphQLISODateTime } from 'type-graphql';
+import { Education } from './Education';
+import { Experience } from './Experience';
 export { TypeGraphQL };
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -25,40 +26,25 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  education?: Maybe<Array<Maybe<Education>>>;
+  links?: Maybe<Array<Maybe<Link | Experience>>>;
 };
 
 @TypeGraphQL.ObjectType()
-export class Education {
-  __typename?: 'Education';
+export class Link {
+  __typename?: 'Link';
 
   @TypeGraphQL.Field((type) => TypeGraphQL.ID)
   id!: Scalars['ID'];
 
   @TypeGraphQL.Field((type) => String)
-  school!: Scalars['String'];
+  title!: Scalars['String'];
 
   @TypeGraphQL.Field((type) => String)
-  degree!: Scalars['String'];
+  url!: Scalars['String'];
 
-  @TypeGraphQL.Field((type) => String)
-  field!: Maybe<Scalars['String']>;
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  createdAt?: Maybe<Scalars['Date']>;
 
-  @TypeGraphQL.Field((type) => String, { nullable: true })
-  minors?: Scalars['String'];
-
-  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
-  startDate!: Scalars['Date'];
-
-  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
-  endDate?: Scalars['Date'];
-
-  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
-  createdAt!: Scalars['Date'];
-
-  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
-  updatedAt!: Scalars['Date'];
-
-  @TypeGraphQL.Field((type) => TypeGraphQL.ID)
-  profileId!: Scalars['ID'];
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  updatedAt?: Maybe<Scalars['Date']>;
 }

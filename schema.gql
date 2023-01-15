@@ -33,6 +33,14 @@ type Experience {
   updatedAt: DateTime
 }
 
+type Link {
+  createdAt: DateTime
+  id: ID!
+  title: String!
+  updatedAt: DateTime
+  url: String!
+}
+
 type Profile {
   bio: String
   createdAt: DateTime
@@ -49,5 +57,6 @@ type Profile {
 type Query {
   getEducation: [Education!]
   getExperiences: [Experience!]
+  getLinks(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Link!]
   getProfiles(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Profile!]
 }

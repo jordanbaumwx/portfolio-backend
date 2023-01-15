@@ -23,7 +23,7 @@ export class EducationResolver {
         updatedAt: education.updatedAt,
       } as unknown as Education;
     });
-    return await this.education;
+    return this.education;
   }
 }
 

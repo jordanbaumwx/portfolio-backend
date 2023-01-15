@@ -24,7 +24,7 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  profiles?: Maybe<Array<Maybe<Experience>>>;
+  experiences?: Maybe<Array<Maybe<Experience>>>;
 };
 
 @TypeGraphQL.ObjectType()

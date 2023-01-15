@@ -23,7 +23,7 @@ export class ExperienceResolver {
         updatedAt: experience.updatedAt,
       } as unknown as Experience;
     });
-    return await this.experiences;
+    return this.experiences;
   }
 }
 
