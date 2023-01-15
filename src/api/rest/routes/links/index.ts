@@ -15,7 +15,7 @@ router.get(
     }
 
     const prisma = new PrismaClient();
-    const skill = await prisma.skills.findUniqueOrThrow({
+    const skill = await prisma.link.findUniqueOrThrow({
       where: {
         id,
       },
