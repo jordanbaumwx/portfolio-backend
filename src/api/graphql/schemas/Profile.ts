@@ -2,6 +2,8 @@ import * as TypeGraphQL from 'type-graphql';
 import { Education } from './Education';
 import { Experience } from './Experience';
 import { Maybe, Scalars } from './helpers';
+import { Link } from './Links';
+import { Skill } from './Skills';
 export { TypeGraphQL };
 
 @TypeGraphQL.ObjectType()
@@ -39,4 +41,12 @@ export class Profile {
   // Create a One to One relationship between Profile and Education
   @TypeGraphQL.Field((type) => [Education], { nullable: true })
   education?: Education[];
+
+  // Create a One to Many relationship between Profile and Skill
+  @TypeGraphQL.Field((type) => [Skill], { nullable: true })
+  skills?: Skill[];
+
+  // Create a One to Many relationship between Profile and Link
+  @TypeGraphQL.Field((type) => [Link], { nullable: true })
+  links?: Link[];
 }

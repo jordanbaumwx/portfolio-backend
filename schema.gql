@@ -48,8 +48,10 @@ type Profile {
   email: String!
   experiences: [Experience!]
   id: ID!
+  links: [Link!]
   name: String!
   photoURL: String
+  skills: [Skill!]
   tagline: String
   updatedAt: DateTime
 }
@@ -59,4 +61,11 @@ type Query {
   getExperiences(id: Int): [Experience!]
   getLinks(id: Int): [Link!]
   getProfiles(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Profile!]
+}
+
+type Skill {
+  createdAt: DateTime
+  id: ID!
+  name: String!
+  updatedAt: DateTime
 }
