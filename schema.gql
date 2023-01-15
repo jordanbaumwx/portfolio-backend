@@ -55,8 +55,8 @@ type Profile {
 }
 
 type Query {
-  getEducation: [Education!]
-  getExperiences: [Experience!]
-  getLinks(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Link!]
+  getEducation(id: Int): [Education!]
+  getExperiences(id: Int): [Experience!]
+  getLinks(id: Int): [Link!]
   getProfiles(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Profile!]
 }

@@ -2,11 +2,6 @@ import * as TypeGraphQL from 'type-graphql';
 import { Maybe, Scalars } from './helpers';
 export { TypeGraphQL };
 
-export type Query = {
-  __typename?: 'Query';
-  experiences?: Maybe<Array<Maybe<Experience>>>;
-};
-
 @TypeGraphQL.ObjectType()
 export class Experience {
   __typename?: 'Experience';

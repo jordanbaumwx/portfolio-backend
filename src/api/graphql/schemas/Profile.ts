@@ -4,11 +4,6 @@ import { Experience } from './Experience';
 import { Maybe, Scalars } from './helpers';
 export { TypeGraphQL };
 
-export type Query = {
-  __typename?: 'Query';
-  profiles?: Maybe<Array<Maybe<Profile | Experience>>>;
-};
-
 @TypeGraphQL.ObjectType()
 export class Profile {
   __typename?: 'Profile';

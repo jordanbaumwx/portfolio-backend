@@ -3,11 +3,6 @@ import { GraphQLISODateTime } from 'type-graphql';
 import { Maybe, Scalars } from './helpers';
 export { TypeGraphQL };
 
-export type Query = {
-  __typename?: 'Query';
-  education?: Maybe<Array<Maybe<Education>>>;
-};
-
 @TypeGraphQL.ObjectType()
 export class Education {
   __typename?: 'Education';
