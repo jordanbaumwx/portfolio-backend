@@ -22,7 +22,7 @@ router.get('/:skillId', async (req: Request, res: Response) => {
       experience: true,
     },
   });
-  return res.send(experiences);
+  return res.send(experiences.map((experience) => experience.experience));
 });
 
 export default router;

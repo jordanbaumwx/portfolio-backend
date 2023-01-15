@@ -23,7 +23,7 @@ router.get(
         skill: true,
       },
     });
-    return res.send(skills);
+    return res.send(skills.map((skill) => skill.skill));
   })
 );
 
