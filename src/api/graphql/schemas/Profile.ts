@@ -45,6 +45,18 @@ export class Profile {
   @TypeGraphQL.Field((type) => String, { nullable: true })
   bio?: Maybe<Scalars['String']>;
 
+  @TypeGraphQL.Field((type) => String, { nullable: true })
+  photoURL?: Maybe<Scalars['String']>;
+
+  @TypeGraphQL.Field((type) => String, { nullable: true })
+  tagline?: Maybe<Scalars['String']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  createdAt?: Maybe<Scalars['Date']>;
+
+  @TypeGraphQL.Field((type) => Date, { nullable: true })
+  updatedAt?: Maybe<Scalars['Date']>;
+
   // Create a One to Many relationship between Profile and Experience
   @TypeGraphQL.Field((type) => [Experience], { nullable: true })
   experiences?: Experience[];

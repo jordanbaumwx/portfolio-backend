@@ -21,7 +21,6 @@ export class EducationResolver {
         endDate: education.endDate,
         createdAt: education.createdAt,
         updatedAt: education.updatedAt,
-        profileId: education.profileId,
       } as unknown as Education;
     });
     return await this.education;

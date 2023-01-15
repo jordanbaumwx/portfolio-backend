@@ -40,9 +40,13 @@ export class ProfileResolver {
         id: profile.id,
         name: profile.name,
         email: profile.email,
+        photoURL: profile.photoURL,
+        tagline: profile.tagline,
         bio: profile.bio,
         experiences: profile.Experience,
         education: profile.Education,
+        createdAt: profile.createdAt,
+        updatedAt: profile.updatedAt,
       } as Profile;
     });
     return await this.profiles;

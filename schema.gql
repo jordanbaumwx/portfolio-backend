@@ -35,11 +35,15 @@ type Experience {
 
 type Profile {
   bio: String
+  createdAt: DateTime
   education: [Education!]
   email: String!
   experiences: [Experience!]
   id: ID!
   name: String!
+  photoURL: String
+  tagline: String
+  updatedAt: DateTime
 }
 
 type Query {
