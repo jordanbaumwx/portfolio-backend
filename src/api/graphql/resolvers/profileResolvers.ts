@@ -45,6 +45,8 @@ export class ProfileResolver {
         bio: profile.bio,
         experiences: profile.Experience,
         education: profile.Education,
+        skills: profile.Skills,
+        links: profile.Links,
         createdAt: profile.createdAt,
         updatedAt: profile.updatedAt,
       } as Profile;
