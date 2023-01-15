@@ -20,5 +20,5 @@ type Profile {
 
 type Query {
   getExperiences: [Experience!]
-  getProfiles(includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean): [Profile!]
+  getProfiles(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Profile!]
 }

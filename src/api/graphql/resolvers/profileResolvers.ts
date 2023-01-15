@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { GraphQLBoolean } from 'graphql/type';
+import { GraphQLBoolean, GraphQLInt, GraphQLString } from 'graphql/type';
 import { Arg, Query, Resolver } from 'type-graphql';
 import { Profile } from '../schemas/Profile';
 
@@ -9,6 +9,9 @@ export class ProfileResolver {
 
   @Query((returns) => [Profile], { nullable: true })
   async getProfiles(
+    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number,
+    @Arg('email', (type) => GraphQLString, { nullable: true }) email?: string,
+    @Arg('name', (type) => GraphQLString, { nullable: true }) name?: string,
     @Arg('includeExperiences', (type) => GraphQLBoolean, { nullable: true })
     includeExperiences?: boolean,
     @Arg('includeSkills', (type) => GraphQLBoolean, { nullable: true })
@@ -18,9 +21,13 @@ export class ProfileResolver {
     @Arg('includeEducation', (type) => GraphQLBoolean, { nullable: true })
     includeEducation?: boolean
   ): Promise<Profile[]> {
-    console.log(includeExperiences);
     const prisma = new PrismaClient();
     const profiles = await prisma.profile.findMany({
+      where: {
+        id,
+        email,
+        name,
+      },
       include: {
         Experience: includeExperiences ?? false,
         Skills: includeSkills ?? false,
