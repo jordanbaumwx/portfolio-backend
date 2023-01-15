@@ -65,7 +65,7 @@ async function main() {
   });
 
   // CreateMany is not supported for SQLite
-  const typeScript = await prisma.skills.create({
+  const typeScript = await prisma.skill.create({
     data: {
       name: 'TypeScript',
       profileId: profile.id,
@@ -79,7 +79,7 @@ async function main() {
     },
   });
 
-  const react = await prisma.skills.create({
+  const react = await prisma.skill.create({
     data: {
       name: 'React.js',
       profileId: profile.id,
@@ -92,7 +92,7 @@ async function main() {
     },
   });
 
-  const node = await prisma.skills.create({
+  const node = await prisma.skill.create({
     data: {
       name: 'Node.js',
       profileId: profile.id,
@@ -105,14 +105,14 @@ async function main() {
     },
   });
 
-  const python = await prisma.skills.create({
+  const python = await prisma.skill.create({
     data: {
       name: 'Python',
       profileId: profile.id,
     },
   });
 
-  const go = await prisma.skills.create({
+  const go = await prisma.skill.create({
     data: {
       name: 'Go',
       profileId: profile.id,
@@ -139,7 +139,7 @@ async function main() {
     },
   });
 
-  await prisma.links.create({
+  await prisma.link.create({
     data: {
       title: 'LinkedIn',
       url: 'https://www.linkedin.com/in/jordancoding/',
