@@ -1,6 +1,5 @@
 // Defines the Experience model in zod
 import { z } from 'zod';
-import { Profile } from './Profile';
 
 export const Experience = z.object({
   id: z.number().int().gt(0),
