@@ -138,6 +138,14 @@ async function main() {
       skillId: go.id,
     },
   });
+
+  await prisma.links.create({
+    data: {
+      title: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/jordancoding/',
+      profileId: profile.id,
+    },
+  });
 }
 
 async function run() {

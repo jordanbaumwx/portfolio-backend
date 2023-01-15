@@ -39,7 +39,7 @@ model Experience {
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   profileId           Int
-  Profile             Profile               @relation(fields: [profileId], references: [id])
+  Profile             Profile               @relation(fields: [profileId], references: [id], onDelete: Cascade)
   SkillsOnExperiences SkillsOnExperiences[]
 }
 
@@ -54,7 +54,7 @@ model Education {
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
   profileId Int
-  Profile   Profile   @relation(fields: [profileId], references: [id])
+  Profile   Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 model Links {
@@ -64,7 +64,7 @@ model Links {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   profileId Int
-  Profile   Profile  @relation(fields: [profileId], references: [id])
+  Profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
 }
 
 model Skills {
@@ -73,13 +73,13 @@ model Skills {
   createdAt           DateTime              @default(now())
   updatedAt           DateTime              @updatedAt
   profileId           Int
-  Profile             Profile               @relation(fields: [profileId], references: [id])
+  Profile             Profile               @relation(fields: [profileId], references: [id], onDelete: Cascade)
   SkillsOnExperiences SkillsOnExperiences[]
 }
 
 model SkillsOnExperiences {
-  experience   Experience @relation(fields: [experienceId], references: [id])
-  skill        Skills     @relation(fields: [skillId], references: [id])
+  experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
+  skill        Skills     @relation(fields: [skillId], references: [id], onDelete: Cascade)
   experienceId Int
   skillId      Int
 
