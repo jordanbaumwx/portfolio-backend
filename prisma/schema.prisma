@@ -6,26 +6,27 @@ generator client {
 }
 
 datasource db {
-  provider          = "sqlite"
-  url               = env("DATABASE_URL")
-  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  //shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Profile {
   id         Int          @id @default(autoincrement())
   name       String
-  photoURL   String?
+  photoURL   String?      @map("photo_url")
   tagline    String?
   bio        String?
   email      String       @unique
-  createdAt  DateTime     @default(now())
-  updatedAt  DateTime     @updatedAt
+  createdAt  DateTime     @default(now()) @map("created_at")
+  updatedAt  DateTime     @updatedAt @map("updated_at")
   Experience Experience[]
-  Links      Links[]
-  Skills     Skills[]
+  Links      Link[]
+  Skills     Skill[]
   Education  Education[]
 
   @@index([email], name: "email")
+  @@map(name: "profiles")
 }
 
 model Experience {
@@ -34,13 +35,15 @@ model Experience {
   company             String
   remote              Boolean
   location            String
-  startDate           DateTime
-  endDate             DateTime?
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
+  startDate           DateTime              @map("start_date")
+  endDate             DateTime?             @map("end_date")
+  createdAt           DateTime              @default(now()) @map("created_at")
+  updatedAt           DateTime              @updatedAt @map("updated_at")
   profileId           Int
   Profile             Profile               @relation(fields: [profileId], references: [id], onDelete: Cascade)
   SkillsOnExperiences SkillsOnExperiences[]
+
+  @@map(name: "experiences")
 }
 
 model Education {
@@ -49,39 +52,46 @@ model Education {
   degree    String
   field     String
   minors    String?
-  startDate DateTime
-  endDate   DateTime?
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  profileId Int
+  startDate DateTime  @map("start_date")
+  endDate   DateTime? @map("end_date")
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAt DateTime  @updatedAt @map("updated_at")
+  profileId Int       @map("profile_id")
   Profile   Profile   @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@map(name: "educations")
 }
 
-model Links {
+model Link {
   id        Int      @id @default(autoincrement())
   title     String
   url       String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  profileId Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  profileId Int      @map("profile_id")
   Profile   Profile  @relation(fields: [profileId], references: [id], onDelete: Cascade)
+
+  @@map(name: "links")
 }
 
-model Skills {
+model Skill {
   id                  Int                   @id @default(autoincrement())
   name                String
-  createdAt           DateTime              @default(now())
-  updatedAt           DateTime              @updatedAt
-  profileId           Int
+  createdAt           DateTime              @default(now()) @map("created_at")
+  updatedAt           DateTime              @updatedAt @map("updated_at")
+  profileId           Int                   @map("profile_id")
   Profile             Profile               @relation(fields: [profileId], references: [id], onDelete: Cascade)
   SkillsOnExperiences SkillsOnExperiences[]
+
+  @@map(name: "skills")
 }
 
 model SkillsOnExperiences {
   experience   Experience @relation(fields: [experienceId], references: [id], onDelete: Cascade)
-  skill        Skills     @relation(fields: [skillId], references: [id], onDelete: Cascade)
-  experienceId Int
-  skillId      Int
+  skill        Skill      @relation(fields: [skillId], references: [id], onDelete: Cascade)
+  experienceId Int        @map("experience_id")
+  skillId      Int        @map("skill_id")
 
   @@id([experienceId, skillId])
+  @@map(name: "skills_on_experiences")
 }
