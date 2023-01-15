@@ -42,6 +42,7 @@ export class ProfileResolver {
         email: profile.email,
         bio: profile.bio,
         experiences: profile.Experience,
+        education: profile.Education,
       } as Profile;
     });
     return await this.profiles;

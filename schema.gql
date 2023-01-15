@@ -3,6 +3,24 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""
+The javascript `Date` as string. Type represents date and time as the ISO Date string.
+"""
+scalar DateTime
+
+type Education {
+  createdAt: DateTime
+  degree: String!
+  endDate: DateTime
+  field: String!
+  id: ID!
+  minors: String
+  profileId: ID!
+  school: String!
+  startDate: DateTime
+  updatedAt: DateTime
+}
+
 type Experience {
   company: String!
   id: ID!
@@ -12,6 +30,7 @@ type Experience {
 
 type Profile {
   bio: String
+  education: [Education!]
   email: String!
   experiences: [Experience!]
   id: ID!
@@ -19,6 +38,7 @@ type Profile {
 }
 
 type Query {
+  getEducation: [Education!]
   getExperiences: [Experience!]
   getProfiles(email: String, id: Int, includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean, name: String): [Profile!]
 }

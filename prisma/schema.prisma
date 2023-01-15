@@ -44,17 +44,17 @@ model Experience {
 }
 
 model Education {
-  id        Int      @id @default(autoincrement())
+  id        Int       @id @default(autoincrement())
   school    String
   degree    String
   field     String
   minors    String?
   startDate DateTime
-  endDate   DateTime
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  endDate   DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
   profileId Int
-  Profile   Profile  @relation(fields: [profileId], references: [id])
+  Profile   Profile   @relation(fields: [profileId], references: [id])
 }
 
 model Links {

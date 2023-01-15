@@ -1,6 +1,5 @@
 import * as TypeGraphQL from 'type-graphql';
-import { Education } from './Education';
-import { Experience } from './Experience';
+import { GraphQLISODateTime } from 'type-graphql';
 export { TypeGraphQL };
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -26,30 +25,40 @@ export type Scalars = {
 
 export type Query = {
   __typename?: 'Query';
-  profiles?: Maybe<Array<Maybe<Profile | Experience>>>;
+  profiles?: Maybe<Array<Maybe<Education>>>;
 };
 
 @TypeGraphQL.ObjectType()
-export class Profile {
-  __typename?: 'Profile';
+export class Education {
+  __typename?: 'Education';
 
   @TypeGraphQL.Field((type) => TypeGraphQL.ID)
   id!: Scalars['ID'];
 
   @TypeGraphQL.Field((type) => String)
-  name!: Scalars['String'];
+  school!: Scalars['String'];
 
   @TypeGraphQL.Field((type) => String)
-  email!: Scalars['String'];
+  degree!: Scalars['String'];
+
+  @TypeGraphQL.Field((type) => String)
+  field!: Maybe<Scalars['String']>;
 
   @TypeGraphQL.Field((type) => String, { nullable: true })
-  bio?: Maybe<Scalars['String']>;
+  minors?: Scalars['String'];
 
-  // Create a One to Many relationship between Profile and Experience
-  @TypeGraphQL.Field((type) => [Experience], { nullable: true })
-  experiences?: Experience[];
+  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
+  startDate!: Scalars['Date'];
 
-  // Create a One to One relationship between Profile and Education
-  @TypeGraphQL.Field((type) => [Education], { nullable: true })
-  education?: Education[];
+  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
+  endDate?: Scalars['Date'];
+
+  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
+  createdAt!: Scalars['Date'];
+
+  @TypeGraphQL.Field((type) => GraphQLISODateTime, { nullable: true })
+  updatedAt!: Scalars['Date'];
+
+  @TypeGraphQL.Field((type) => TypeGraphQL.ID)
+  profileId!: Scalars['ID'];
 }

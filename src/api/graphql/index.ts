@@ -4,10 +4,11 @@ import { buildSchema } from 'type-graphql';
 import { ProfileResolver } from './resolvers/profileResolvers';
 import { ExperienceResolver } from './resolvers/experienceResolvers';
 import express from 'express';
+import { EducationResolver } from './resolvers/educationResolvers';
 
 async function main() {
   const schema = await buildSchema({
-    resolvers: [ProfileResolver, ExperienceResolver],
+    resolvers: [ProfileResolver, ExperienceResolver, EducationResolver],
     emitSchemaFile: true,
   });
 
