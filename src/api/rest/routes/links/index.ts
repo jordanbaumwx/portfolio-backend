@@ -6,27 +6,21 @@ import { asyncHandler } from '../../utils';
 
 const router = Router();
 router.get(
-  '/:email',
+  '/:id',
   asyncHandler(async (req: Request, res: Response) => {
-    const email = req.params.email;
+    const id = req.params.id;
     // Make sure email is defined and a string
-    if (!email || typeof email !== 'string') {
-      return res.status(400).send('Email is required');
+    if (!id || typeof id !== 'number') {
+      return res.status(400).send('ID is required');
     }
 
     const prisma = new PrismaClient();
-    const profile = await prisma.profile.findUniqueOrThrow({
+    const skill = await prisma.skills.findUniqueOrThrow({
       where: {
-        email,
-      },
-      include: {
-        Skills: true,
-        Experience: true,
-        Links: true,
-        Education: true,
+        id,
       },
     });
-    return res.send(profile);
+    return res.send(skill);
   })
 );
 
