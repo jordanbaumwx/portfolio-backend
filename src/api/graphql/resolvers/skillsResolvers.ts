@@ -12,7 +12,7 @@ export class SkillResolver {
     @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number
   ): Promise<Skill[]> {
     const prisma = new PrismaClient();
-    const skills = await prisma.skills.findMany({
+    const skills = await prisma.skill.findMany({
       where: {
         id,
       },

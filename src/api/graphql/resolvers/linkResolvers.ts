@@ -12,7 +12,7 @@ export class LinkResolver {
     @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number
   ): Promise<Link[]> {
     const prisma = new PrismaClient();
-    const links = await prisma.links.findMany({
+    const links = await prisma.link.findMany({
       where: {
         id,
       },
