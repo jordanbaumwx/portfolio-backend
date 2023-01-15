@@ -1,5 +1,5 @@
-import { Experience } from '@prisma/client';
 import * as TypeGraphQL from 'type-graphql';
+import { Experience } from './Experience';
 export { TypeGraphQL };
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
@@ -43,4 +43,8 @@ export class Profile {
 
   @TypeGraphQL.Field((type) => String, { nullable: true })
   bio?: Maybe<Scalars['String']>;
+
+  // Create a One to Many relationship between Profile and Experience
+  @TypeGraphQL.Field((type) => [Experience], { nullable: true })
+  experiences?: Experience[];
 }

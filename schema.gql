@@ -13,11 +13,12 @@ type Experience {
 type Profile {
   bio: String
   email: String!
+  experiences: [Experience!]
   id: ID!
   name: String!
 }
 
 type Query {
   getExperiences: [Experience!]
-  getProfiles: [Profile!]
+  getProfiles(includeEducation: Boolean, includeExperiences: Boolean, includeLinks: Boolean, includeSkills: Boolean): [Profile!]
 }
