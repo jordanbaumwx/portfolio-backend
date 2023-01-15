@@ -9,17 +9,7 @@ export class LinkResolver {
 
   @Query((returns) => [Link], { nullable: true })
   async getLinks(
-    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number,
-    @Arg('email', (type) => GraphQLString, { nullable: true }) email?: string,
-    @Arg('name', (type) => GraphQLString, { nullable: true }) name?: string,
-    @Arg('includeExperiences', (type) => GraphQLBoolean, { nullable: true })
-    includeExperiences?: boolean,
-    @Arg('includeSkills', (type) => GraphQLBoolean, { nullable: true })
-    includeSkills?: boolean,
-    @Arg('includeLinks', (type) => GraphQLBoolean, { nullable: true })
-    includeLinks?: boolean,
-    @Arg('includeEducation', (type) => GraphQLBoolean, { nullable: true })
-    includeEducation?: boolean
+    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number
   ): Promise<Link[]> {
     const prisma = new PrismaClient();
     const links = await prisma.links.findMany({
@@ -39,9 +29,3 @@ export class LinkResolver {
     return this.links;
   }
 }
-
-/* GraphQL Query
-    type Query {
-    getProfiles: [Profile!]
-    }
-*/

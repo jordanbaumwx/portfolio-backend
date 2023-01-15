@@ -9,17 +9,7 @@ export class SkillResolver {
 
   @Query((returns) => [Skill], { nullable: true })
   async getSkills(
-    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number,
-    @Arg('email', (type) => GraphQLString, { nullable: true }) email?: string,
-    @Arg('name', (type) => GraphQLString, { nullable: true }) name?: string,
-    @Arg('includeExperiences', (type) => GraphQLBoolean, { nullable: true })
-    includeExperiences?: boolean,
-    @Arg('includeSkills', (type) => GraphQLBoolean, { nullable: true })
-    includeSkills?: boolean,
-    @Arg('includeLinks', (type) => GraphQLBoolean, { nullable: true })
-    includeLinks?: boolean,
-    @Arg('includeEducation', (type) => GraphQLBoolean, { nullable: true })
-    includeEducation?: boolean
+    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number
   ): Promise<Skill[]> {
     const prisma = new PrismaClient();
     const skills = await prisma.skills.findMany({
@@ -38,9 +28,3 @@ export class SkillResolver {
     return this.skills;
   }
 }
-
-/* GraphQL Query
-    type Query {
-    getProfiles: [Profile!]
-    }
-*/

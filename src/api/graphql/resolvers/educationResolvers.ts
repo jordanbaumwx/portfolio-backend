@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
-import { Query, Resolver } from 'type-graphql';
+import { GraphQLInt } from 'graphql/type';
+import { Arg, Query, Resolver } from 'type-graphql';
 import { Education } from '../schemas/Education';
 
 @Resolver((of) => Education)
@@ -7,9 +8,11 @@ export class EducationResolver {
   private education: Education[] = [];
 
   @Query((returns) => [Education], { nullable: true })
-  async getEducation(): Promise<Education[]> {
+  async getEducation(
+    @Arg('id', (type) => GraphQLInt, { nullable: true }) id?: number
+  ): Promise<Education[]> {
     const prisma = new PrismaClient();
-    const education = await prisma.education.findMany();
+    const education = await prisma.education.findMany({ where: { id } });
     this.education = education.map((education) => {
       return {
         id: education.id,
@@ -26,9 +29,3 @@ export class EducationResolver {
     return this.education;
   }
 }
-
-/* GraphQL Query
-    type Query {
-    getProfiles: [Profile!]
-    }
-*/

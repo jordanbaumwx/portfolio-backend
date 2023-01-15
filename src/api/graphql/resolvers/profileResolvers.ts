@@ -52,9 +52,3 @@ export class ProfileResolver {
     return this.profiles;
   }
 }
-
-/* GraphQL Query
-    type Query {
-    getProfiles: [Profile!]
-    }
-*/
